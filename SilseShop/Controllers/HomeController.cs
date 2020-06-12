@@ -12,10 +12,11 @@ namespace SilseShop.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        
-        public HomeController(ILogger<HomeController> logger)
+        private ProductRepository _productRepository;
+        public HomeController(ILogger<HomeController> logger, ProductRepository productRepository)
         {
             _logger = logger;
+            _productRepository = productRepository;
         }
         
         public IActionResult Index()
