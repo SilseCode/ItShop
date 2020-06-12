@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SilseShop.Database;
 using SilseShop.Models;
+using SilseShop.Services;
 
 namespace SilseShop
 {
@@ -27,7 +28,7 @@ namespace SilseShop
         {
             services.AddControllersWithViews();
             services.AddDbContext<ShopDbContext>();// options=>op...
-            services.AddSingleton<ProductRepository>();
+            services.AddSingleton<ProductRepository>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
