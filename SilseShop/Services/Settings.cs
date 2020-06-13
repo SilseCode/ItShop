@@ -11,7 +11,7 @@ namespace SilseShop.Services
         public static string ConnectionString { get; private set; }
         public static Dictionary<string, string> Configuration { get; set; }
 
-         public static void Init()
+        static Settings()
         {
             Configuration = new Dictionary<string, string>();
 #if DEBUG

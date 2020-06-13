@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SilseShop.Models;
+using SilseShop.Services;
 
 namespace SilseShop.Controllers
 {
@@ -21,7 +22,7 @@ namespace SilseShop.Controllers
         
         public IActionResult Index()
         {
-            return View();
+            return View(_productRepository.GetList());
         }
 
         public IActionResult Privacy()
