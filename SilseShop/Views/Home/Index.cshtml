@@ -2,10 +2,10 @@
     ViewData["Title"] = "Home Page";
 }
 @model IEnumerable<Product>
-<div class="d-inline-flex m-0 p-0 bg-white ">
-    <div class="categorys border">
-        <div class="text-center m-0 p-0">
-            <span class="navbar-brand category-title ">Категории</span>
+<div class="d-inline-flex m-0 p-0 bg-white w-100 justify-content-b ">
+    <div class="container border categorys ">
+        <div class="text-center category-title ">
+            <span class="navbar-brand ">Категории</span>
         </div>
         <div class="category">
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
@@ -19,13 +19,13 @@
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
             <a>Материнские платы</a>
         </div>
-        <div class="category">
+        <div class="category ">
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
             <a>Оперативная память</a>
         </div>
     </div>
 
-    <div class="content-block flex-wrap">
+    <div class="container-fluid content-block flex-wrap col-4">
         @foreach (Product product in Model)
         {
             @await Html.PartialAsync("Product", product);
