@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SilseShop.Database;
 using SilseShop.Models;
 using SilseShop.Services;
 
@@ -14,15 +15,21 @@ namespace SilseShop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private ProductRepository _productRepository;
-        public HomeController(ILogger<HomeController> logger, ProductRepository productRepository)
+        private ShopDbContext _db;
+        private List<ProductType> _productTypes;
+        public HomeController(ILogger<HomeController> logger, ProductRepository productRepository, ShopDbContext db)
         {
             _logger = logger;
             _productRepository = productRepository;
+            _db = db;
+            _productTypes = _db.ProductTypes.ToList();
         }
-        
+
         public IActionResult Index()
-        {
-            return View(_productRepository.GetList());
+        { 
+
+            List<ProductViewModel> products = _productRepository.GetList().Select(p => new ProductViewModel(p.Name, p.Price, p.ImgUrl, _productTypes.Single(t=>t.Id == p.TypeId).Type)).ToList(); 
+            return View(products);
         }
 
         public IActionResult Privacy()
