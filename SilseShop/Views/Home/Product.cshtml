@@ -1,8 +1,10 @@
-﻿@model Product 
-<div class="container border">
-    <span class="card-title">@Model.Name</span>
-    <div>
-        <img src=@Model.ImgUrl alt=@Model.Name + "_image" />
+﻿@model ProductViewModel
+<div class="container border product">
+    <div class="row">
+        <div class="col">
+            <img src=@Model.ImgUrl alt=@Model.Name + "_image" />
+        </div>
+        <span class="card-title "> @Model.TypeName @Model.Name</span>
+        <span>Цена: @Model.Price</span>
     </div>
-    <span>Цена: @Model.Price</span>
 </div>

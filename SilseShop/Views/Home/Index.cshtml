@@ -1,15 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IEnumerable<Product>
-<div class="d-inline-flex m-0 p-0 bg-white w-100 justify-content-b ">
-    <div class="container border categorys ">
+@model List<ProductViewModel>
+<div class="bg-white col row d-flex flex-wrap">
+    <div class="container border categorys col ">
         <div class="text-center category-title ">
             <span class="navbar-brand ">Категории</span>
         </div>
         <div class="category">
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
-            <a href="">Процессоры</a>
+            <a>Процессоры</a>
         </div>
         <div class="category">
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
@@ -19,14 +19,13 @@
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
             <a>Материнские платы</a>
         </div>
-        <div class="category ">
+        <div class="category">
             <span><img src="~/images/shopping_cart.png" alt="" /></span>
-            <a>Оперативная память</a>
+            <a  asp-controller="Home" asp-action="Privacy">Оперативная память</a>
         </div>
     </div>
-
-    <div class="container-fluid content-block flex-wrap col-4">
-        @foreach (Product product in Model)
+    <div class="container col d-flex flex-wrap justify-content-center">
+        @foreach (ProductViewModel product in Model)
         {
             @await Html.PartialAsync("Product", product);
         }
