@@ -11,7 +11,10 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\images\Processors\" />
+    <Folder Include="wwwroot\images\Videocards\" />
+    <Folder Include="wwwroot\images\Motherboards\" />
+    <Folder Include="wwwroot\images\RAM\" />
   </ItemGroup>
 
   <ItemGroup>

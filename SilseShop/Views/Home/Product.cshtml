@@ -1,10 +1,13 @@
 ﻿@model ProductViewModel
 <div class="container border product">
-    <div class="row">
-        <div class="col">
-            <img src=@Model.ImgUrl alt=@Model.Name + "_image" />
+    <div class="container row product-child">
+        <div class="col text-center ">
+            <img src="@Url.Content(Model.ImgUrl)" class ="product-img"alt= "@Url.Content(@Model.Name + "_image")" />
         </div>
-        <span class="card-title "> @Model.TypeName @Model.Name</span>
-        <span>Цена: @Model.Price</span>
+        <div class="product-title text-center>
+            <span class="card-title "> @Model.TypeName @Model.Name</span>
+            <br />
+            <span>Цена: @Model.Price Руб.</span>
+        </div>
     </div>
 </div>
