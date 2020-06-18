@@ -15,9 +15,9 @@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IT Shop</a>
                 <div class="navbar-collapse collapse justify-content-center search-field">
                     <div class="container">
-                        <form method="post" action="Home/Search">
+                        <form method="post" action="Search">
                             <div class="input-group d-inline-flex">
-                                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                                <input class="form-control" type="text" name ="searchRequest" >
                                 <div class="input-group-append ">
                                     <span class="input-group-text m-0 p-0">
                                         <input class="searchIcon" type="image" src="~/images/search_icon.png" value="Поиск">
