@@ -31,7 +31,7 @@
             <span class="shopping-cart nav-item navbar-collapse collapse justify-content-end">
                <a class="nav-link text-white" asp-controller="Home" asp-action="ShoppingCart"><img src="~/images/shopping_cart.png" alt="Корзина" />Корзина</a>
             </span>
-            <div class="nav-item navbar-collapse collapse"> 
+            <div class="nav-item navbar-collapse collapse">
                @{
                   if (User.Identity.IsAuthenticated)
                   {
@@ -42,8 +42,10 @@
                   }
                   else
                   {
-                     <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Login">Login</a>
-                     <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Register">Register</a>
+                     <div class="nav-item justify-content-between">
+                        <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Login">Login</a>
+                        <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Register">Register</a>
+                     </div>
                   }
                }
             </div>

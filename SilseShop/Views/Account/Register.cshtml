@@ -1,7 +1,5 @@
 ﻿@model SilseShop.ViewModels.RegisterViewModel
 <div>
-
-
    <form asp-antiforgery="true" asp-action="Register" asp-controller="Account">
       <div>
          <div class="validation" asp-validation-summary="ModelOnly"></div>
@@ -9,7 +7,6 @@
             <label asp-for="Login"></label><br />
             <input type="text" asp-for="Login" />
             <span asp-validation-for="Login"></span>
-
          </div>
          <div>
             <label asp-for="Email"></label><br />
@@ -27,7 +24,6 @@
       </div>
    </form>
 </div>
-
 @section scripts{
 
    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
