@@ -12,6 +12,7 @@ using SilseShop.Services;
 
 namespace SilseShop.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,12 +25,14 @@ namespace SilseShop.Controllers
             _productRepository = productRepository;
             _db = db;
             _productTypes = _db.ProductTypes.ToList();
+            
         }
 
         public IActionResult Index()
         { 
             List<ProductViewModel> products = _productRepository.GetList().Select(p => new ProductViewModel(p.Name, p.Price, p.ImgUrl, _productTypes.Single(t=>t.Id == p.TypeId).Type)).ToList(); 
             return View(products);
+            
         }
 
         [Route("Search")]

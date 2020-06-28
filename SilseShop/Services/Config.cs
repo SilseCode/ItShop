@@ -6,12 +6,12 @@ using System.Linq;
 
 namespace SilseShop.Services
 {
-    class Settings
+    class Config
     {
         public static string ConnectionString { get; private set; }
         public static Dictionary<string, string> Configuration { get; set; }
 
-        static Settings()
+        static Config()
         {
             Configuration = new Dictionary<string, string>();
 #if DEBUG

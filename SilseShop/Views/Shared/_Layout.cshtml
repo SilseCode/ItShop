@@ -1,57 +1,77 @@
 ﻿<!DOCTYPE html>
 <html lang="ru en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SilseShop</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>@ViewData["Title"] - SilseShop</title>
+   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+   <link rel="stylesheet" href="~/css/site.css" />
+   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body class="bg-gray">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 fixed-top">
-            <div class="container d-flex justify-content-between">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IT Shop</a>
-                <div class="navbar-collapse collapse justify-content-center search-field">
-                    <div class="container">
-                        <form method="post" action="Search">
-                            <div class="input-group d-inline-flex">
-                                <input class="form-control" type="text" name ="searchRequest" >
-                                <div class="input-group-append ">
-                                    <span class="input-group-text m-0 p-0">
-                                        <input class="searchIcon" type="image" src="~/images/search_icon.png" value="Поиск">
-                                    </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <span class="shopping-cart nav-item navbar-collapse collapse justify-content-end">
-                    <a class="nav-link text-white" asp-controller="Home" asp-action="ShoppingCart"><img src="~/images/shopping_cart.png" alt="Корзина" />Корзина</a>
-                </span>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+   <header>
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 fixed-top">
+         <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IT Shop</a>
+            <div class="navbar-collapse collapse justify-content-center search-field">
+               <div class="container">
+                  <form method="post" action="Search">
+                     <div class="input-group d-inline-flex">
+                        <input class="form-control" type="text" name="searchRequest">
+                        <div class="input-group-append ">
+                           <span class="input-group-text m-0 p-0">
+                              <input class="searchIcon" type="image" src="~/images/search_icon.png" value="Поиск">
+                           </span>
+                        </div>
+                     </div>
+                  </form>
+               </div>
             </div>
-        </nav>
-    </header>
-    <div class="container body-border bg-gray">
-        <main role="main" class="pb-3 ">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - SilseShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+            <span class="shopping-cart nav-item navbar-collapse collapse justify-content-end">
+               <a class="nav-link text-white" asp-controller="Home" asp-action="ShoppingCart"><img src="~/images/shopping_cart.png" alt="Корзина" />Корзина</a>
+            </span>
+            <div class="nav-item navbar-collapse collapse"> 
+               @{
+                  if (User.Identity.IsAuthenticated)
+                  {
+                     <p>@User.Identity.Name</p>
+                     <form method="post" asp-controller="Account" asp-action="Logout">
+                        <input type="submit" value="Выход" />
+                     </form>
+                  }
+                  else
+                  {
+                     <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Login">Login</a>
+                     <a class="btn-link text-decoration-none text-white justify-content-end border-light" asp-controller="Account" asp-action="Register">Register</a>
+                  }
+               }
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+
+         </div>
+      </nav>
+   </header>
+   <div class="container body-border bg-gray">
+      <main role="main" class="pb-3 ">
+         @RenderBody()
+      </main>
+   </div>
+   <script>
+      jQuery.
+   </script>
+   <footer class="border-top footer text-muted">
+      <div class="container">
+         &copy; 2020 - SilseShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+      </div>
+   </footer>
+   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="~/js/site.js" asp-append-version="true"></script>
+   @RenderSection("Scripts", required: false)
 </body>
 </html>

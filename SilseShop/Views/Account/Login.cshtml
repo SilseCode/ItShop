@@ -1,0 +1,24 @@
+﻿@model SilseShop.ViewModels.LoginViewModel
+@{
+   ViewData["Title"] = "Login";
+}
+
+<div class="container-fluid d-flex">
+   <form method="post" asp-antiforgery="true" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+      <div>
+         <label asp-for="Login" /> <br />
+         <input asp-for="Login" />
+         <span asp-validation-for="Login"></span>
+      </div>
+      <div>
+         <label asp-for="Password" /> <br />
+         <input asp-for="Password" />
+         <span asp-validation-for="Password"></span>
+      </div>
+      <div>
+         <label asp-for="RememberMe" />
+         <input asp-for="RememberMe" />
+      </div>
+      <input class="btn btn-success btn-sm" type="submit" value="Авторизироваться" />
+   </form>
+</div>
