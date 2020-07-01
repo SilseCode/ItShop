@@ -35,9 +35,9 @@
                @{
                   if (User.Identity.IsAuthenticated)
                   {
-                     <p>@User.Identity.Name</p>
-                     <form method="post" asp-controller="Account" asp-action="Logout">
-                        <input type="submit" value="Выход" />
+                     <span class="navbar-brand">@User.Identity.Name</span>
+                     <form asp-action="Logout" asp-controller="Account" method="post">
+                        <input class="btn btn-sm btn-light btn" type="submit" value="Выход">
                      </form>
                   }
                   else
@@ -63,9 +63,7 @@
          @RenderBody()
       </main>
    </div>
-   <script>
-      jQuery.
-   </script>
+  
    <footer class="border-top footer text-muted">
       <div class="container">
          &copy; 2020 - SilseShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

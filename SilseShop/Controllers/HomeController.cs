@@ -44,24 +44,28 @@ namespace SilseShop.Controllers
             var products = preResult.Select(r => new ProductViewModel(r.Name, r.Price, r.ImgUrl, _productTypes.Single(t => t.Id == r.TypeId).Type)).ToList();
             return View("Index", products);
         }
+
         [Route("Processors")]
         public IActionResult Processors()
         {
             List<ProductViewModel> products = _productRepository.GetList().Where(p=>p.TypeId == 1).Select(p => new ProductViewModel(p.Name, p.Price, p.ImgUrl, _productTypes.Single(t => t.Id == p.TypeId).Type)).ToList();
             return View("Index", products);
         }
+
         [Route("Videocards")]
         public IActionResult Videocards()
         {
             List<ProductViewModel> products = _productRepository.GetList().Where(p => p.TypeId == 2).Select(p => new ProductViewModel(p.Name, p.Price, p.ImgUrl, _productTypes.Single(t => t.Id == p.TypeId).Type)).ToList();
             return View("Index", products);
         }
+
         [Route("Motherboards")]
         public IActionResult Motherboards()
         {
             List<ProductViewModel> products = _productRepository.GetList().Where(p => p.TypeId == 3).Select(p => new ProductViewModel(p.Name, p.Price, p.ImgUrl, _productTypes.Single(t => t.Id == p.TypeId).Type)).ToList();
             return View("Index", products);
         }
+
         [Route("RAM")]
         public IActionResult RAM()
         {
@@ -69,11 +73,6 @@ namespace SilseShop.Controllers
             return View("Index", products);
         }
       
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
