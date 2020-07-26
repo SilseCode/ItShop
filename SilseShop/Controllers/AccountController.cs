@@ -4,38 +4,37 @@ using Microsoft.AspNetCore.Routing;
 using SilseShop.Database;
 using SilseShop.Models;
 using SilseShop.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace SilseShop.Controllers
 {
     public class AccountController : Controller
     {
-        private UsersDbContext _usersDb;
+        private UsersDbContext _db;
         private SignInManager<User> _signInManager;
         private UserManager<User> _userManager;
-        public AccountController(UsersDbContext usersDb, SignInManager<User> signInManager, UserManager<User> userManager)
+        public AccountController(UsersDbContext db, SignInManager<User> signInManager, UserManager<User> userManager)
         {
-            _usersDb = usersDb;
+            _db = db;
             _signInManager = signInManager;
             _userManager = userManager;
         }
 
         [HttpGet]
-        [Route("Login")]
+        [Route("login")]
         public IActionResult Login(string returnUrl = null)
         {
             return View(new LoginViewModel { ReturnUrl = returnUrl });
         }
-        [Route("Login")]
+
+        [Route("login")]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Login, model.Password, model.RememberMe, false);
+                SignInResult result = await _signInManager.PasswordSignInAsync(model.Login, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
@@ -44,7 +43,7 @@ namespace SilseShop.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Nav");
                     }
                 }
                 else
@@ -52,17 +51,17 @@ namespace SilseShop.Controllers
                     ModelState.AddModelError("", "Неправильный логин и (или) пароль");
                 }
             }
-           
+
             return View(model);
         }
 
-        [Route("Register")]
+        [Route("register")]
         public IActionResult Register()
         {
             return View();
         }
 
-        [Route("Register")]
+        [Route("register")]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -77,7 +76,7 @@ namespace SilseShop.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Nav");
                 }
                 else
                 {
@@ -93,7 +92,7 @@ namespace SilseShop.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Nav");
         }
     }
 }

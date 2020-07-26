@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200726043119_AddCountProp.cs" />
+    <Compile Remove="Migrations\20200726043119_AddCountProp.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\images\Processors\" />
     <Folder Include="wwwroot\images\Videocards\" />
     <Folder Include="wwwroot\images\Motherboards\" />

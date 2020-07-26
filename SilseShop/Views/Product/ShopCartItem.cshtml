@@ -1,0 +1,18 @@
+﻿@model ProductViewModel
+@{
+   ViewData["Title"] = "ShopCartItem";
+}
+<div class="container border product">
+   <div class="container row product-child">
+      <div class="col text-center ">
+         <img src="@Url.Content(Model.ImgUrl)" class="product-img" alt="@Url.Content(@Model.Name + "_image")" />
+      </div>
+      <div class="product-title text-center">
+         <span class="card-title "> @Model.TypeName @Model.Name</span>
+         <br />
+         <span class="font-weight-bold">@Model.Price Руб.</span>
+         <br />   
+         <span>Количество: @Model.Count</span>
+      </div>
+   </div>
+</div>

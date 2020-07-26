@@ -1,5 +1,3 @@
-using System;
-
 namespace SilseShop.Models
 {
     public class ErrorViewModel

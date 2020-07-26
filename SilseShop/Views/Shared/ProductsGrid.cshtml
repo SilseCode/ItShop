@@ -1,7 +1,0 @@
-﻿@model List<ProductViewModel>
-<div class="container col d-flex flex-wrap justify-content-center">
-   @foreach (ProductViewModel product in Model)
-   {
-      @await Html.PartialAsync("Product", product);
-   }
-</div>

@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SilseShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SilseShop.Database
 {
@@ -13,8 +9,19 @@ namespace SilseShop.Database
         {
             Database.EnsureCreated();
         }
-        
+
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
+        public DbSet<ShopCart> Carts { get; set; }
+        public DbSet<ShopCartItem> ShopCartItems { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ShopCartItem>()
+            .Property(i => i.Id)
+            .ValueGeneratedOnAdd();
+        }
+
     }
 }

@@ -12,7 +12,7 @@
    <header>
       <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3 fixed-top">
          <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IT Shop</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Nav" asp-action="Index">IT Shop</a>
             <div class="navbar-collapse collapse justify-content-center search-field">
                <div class="container">
                   <form method="post" action="Search">
@@ -29,7 +29,7 @@
             </div>
 
             <span class="shopping-cart nav-item navbar-collapse collapse justify-content-end">
-               <a class="nav-link text-white" asp-controller="Home" asp-action="ShoppingCart"><img src="~/images/shopping_cart.png" alt="Корзина" />Корзина</a>
+               <a class="nav-link text-white" asp-controller="Product" asp-action="ShopCart"><img src="~/images/shopping_cart.png" alt="Корзина" />Корзина</a>
             </span>
             <div class="nav-item navbar-collapse collapse">
                @{
@@ -66,7 +66,7 @@
   
    <footer class="border-top footer text-muted">
       <div class="container">
-         &copy; 2020 - SilseShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+         &copy; 2020 - SilseShop - <a asp-area="" asp-controller="Nav" asp-action="Privacy">Privacy</a>
       </div>
    </footer>
    <script src="~/lib/jquery/dist/jquery.min.js"></script>
