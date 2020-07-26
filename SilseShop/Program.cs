@@ -8,7 +8,16 @@ namespace SilseShop
     {
         public static void Main(string[] args)
         {
+            try
+            {
+
             CreateHostBuilder(args).Build().Run();
+            }
+            catch (System.Exception ex)
+            {
+
+                System.Console.WriteLine(ex.Message);
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
