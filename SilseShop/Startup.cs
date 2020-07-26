@@ -30,7 +30,7 @@ namespace SilseShop
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>();
             services.AddScoped<ProductRepository>();
             services.AddScoped<ShopCartManager>();
-            services.AddSession(session => session.IdleTimeout = new System.TimeSpan(3,0,0,0));
+            //services.AddSession(session => session.IdleTimeout = new System.TimeSpan(3,0,0,0));
             //services.AddMemoryCache();
         }
 
