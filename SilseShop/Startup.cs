@@ -31,7 +31,6 @@ namespace SilseShop
             services.AddScoped<ProductRepository>();
             services.AddScoped<ShopCartManager>();
             services.AddSession(session => session.IdleTimeout = new System.TimeSpan(3,0,0,0));
-            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
