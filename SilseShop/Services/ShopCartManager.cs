@@ -23,7 +23,7 @@ namespace SilseShop.Services
         public async Task AddToCart(Product product)
         {
             ShopCart cart = GetCart();
-            if (_db.ShopCartItems.Any(i => i.Product.Id == product.Id))
+            if (_db.ShopCartItems.Any(i => i.Product.Id == product.Id && i.ShopCartId == cart.Id))
             {
                 ShopCartItem item = _db.ShopCartItems.Single(i => i.Product.Id == product.Id);
                 item.Count++;
