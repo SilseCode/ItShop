@@ -30,8 +30,8 @@ namespace SilseShop
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>();
             services.AddScoped<ProductRepository>();
             services.AddScoped<ShopCartManager>();
-            //services.AddSession(session => session.IdleTimeout = new System.TimeSpan(3,0,0,0));
-            //services.AddMemoryCache();
+            services.AddSession(session => session.IdleTimeout = new System.TimeSpan(3,0,0,0));
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +43,7 @@ namespace SilseShop
             }
             else
             {
-                app.UseExceptionHandler("Error");
+                app.UseExceptionHandler("/Shared/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
