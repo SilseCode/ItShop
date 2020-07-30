@@ -1,18 +1,28 @@
 ﻿@model ProductViewModel
 @{
-   ViewData["Title"] = "ShopCartItem";
+    ViewData["Title"] = "ShopCartItem";
 }
 <div class="container border product">
-   <div class="container row product-child">
+   <div class="container row product-child justify-content-center" >
       <div class="col text-center ">
          <img src="@Url.Content(Model.ImgUrl)" class="product-img" alt="@Url.Content(@Model.Name + "_image")" />
       </div>
       <div class="product-title text-center">
          <span class="card-title "> @Model.TypeName @Model.Name</span>
          <br />
-         <span class="font-weight-bold">@Model.Price Руб.</span>
-         <br />   
-         <span>Количество: @Model.Count</span>
+         <span class="font-weight-bold">@(Model.Price * Model.Count) Руб.</span>
+         <br />
+      </div>
+      <div class="d-flex justify-content-center ">
+         <form method="post" asp-controller="Product" asp-action="DeleteFromCart">
+            @Html.HiddenFor(m => m.Id)
+            <input class="btn btn-light btn-sm" type="submit" value="-" />
+         </form>
+         <span>@Model.Count</span>
+         <form method="post" asp-controller="Product" asp-action="AddToCart">
+            @Html.HiddenFor(m => m.Id)
+            <input class="btn btn-light btn-sm" type="submit" value="+" />
+         </form>
       </div>
    </div>
 </div>

@@ -25,7 +25,7 @@ namespace SilseShop.Services
             ShopCart cart = GetCart();
             if (_db.ShopCartItems.Any(i => i.Product.Id == product.Id && i.ShopCartId == cart.Id))
             {
-                ShopCartItem item = _db.ShopCartItems.Single(i => i.Product.Id == product.Id);
+                ShopCartItem item = _db.ShopCartItems.FirstOrDefault(i => i.Product.Id == product.Id && i.ShopCartId == cart.Id);
                 item.Count++;
                 _db.ShopCartItems.Update(item);
             }
@@ -41,6 +41,25 @@ namespace SilseShop.Services
                 _db.ShopCartItems.Add(shopCartItem);
             }
             await _db.SaveChangesAsync();
+        }
+
+        public async Task DeleteFromCart(Product product)
+        {
+            ShopCart cart = GetCart();
+            if (_db.ShopCartItems.Any(i => i.Product.Id == product.Id && i.ShopCartId == cart.Id))
+            {
+                ShopCartItem item = _db.ShopCartItems.FirstOrDefault(i => i.Product.Id == product.Id && i.ShopCartId == cart.Id);
+                item.Count--;
+                if (item.Count == 0)
+                {
+                    _db.ShopCartItems.Remove(item);
+                }
+                else
+                {
+                    _db.ShopCartItems.Update(item);
+                }
+                await _db.SaveChangesAsync();
+            }
         }
 
         public List<ProductViewModel> GetShopCartItems(string cartId)
@@ -67,9 +86,18 @@ namespace SilseShop.Services
             else
             {
                 string cartId = httpContext.Session.GetString("cart");
-                httpContext.Session.SetString("cart", cartId);
-
                 ShopCart cart = _db.Carts.Find(cartId);
+                if (cart == null)
+                {
+                    cart = new ShopCart();
+                    cartId = Guid.NewGuid().ToString();
+                    cart.Id = cartId;
+                    cart.DateCreation = DateTime.Now;
+                    httpContext.Session.SetString("cart", cartId);
+                    _db.Carts.Add(cart);
+                    _db.SaveChanges();
+                    return cart;
+                }
                 return cart;
             }
         }

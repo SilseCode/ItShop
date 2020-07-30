@@ -22,9 +22,16 @@ namespace SilseShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddToCart(int Id)
+        public async Task<IActionResult> AddToCart(int id)
         {
-            await _cartManager.AddToCart(_products.Get(Id));
+            await _cartManager.AddToCart(_products.Get(id));
+            return RedirectToAction("ShopCart", "Product");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteFromCart(int id)
+        {
+            await _cartManager.DeleteFromCart(_products.Get(id));
             return RedirectToAction("ShopCart", "Product");
         }
 
