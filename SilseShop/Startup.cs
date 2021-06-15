@@ -25,8 +25,8 @@ namespace SilseShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<ShopDbContext>(options => options.UseNpgsql(Config.ConnectionString));
-            services.AddDbContext<UsersDbContext>(options => options.UseNpgsql(Config.ConnectionString));
+            services.AddDbContext<ShopDbContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
+            services.AddDbContext<UsersDbContext>(options => options.UseNpgsql(Configuration["ConnectionString"]));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UsersDbContext>();
             services.AddScoped<ProductRepository>();
             services.AddScoped<ShopCartManager>();
