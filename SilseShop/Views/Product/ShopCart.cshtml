@@ -1,0 +1,19 @@
+﻿@model List<ProductViewModel>
+<div class="container body-border mw-100 w-100">
+   @if (Model != null)
+   {
+      <div class="container col d-flex flex-wrap justify-content-center">
+         @foreach (var item in Model)
+         {
+            @await Html.PartialAsync("ShopCartItem", item);
+         }
+      </div>
+
+   }
+   else
+   {
+      <div class="container m-auto mw-100 w-100 text-center">
+         <p>Корзина пуста</p>
+      </div>
+   }
+</div>

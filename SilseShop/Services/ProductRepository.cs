@@ -3,7 +3,6 @@ using SilseShop.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SilseShop.Models
 {
@@ -22,7 +21,7 @@ namespace SilseShop.Models
         public void Delete(int id)
         {
             var product = _dbContext.Products.Find(id);
-            if(product!= null)
+            if (product != null)
             {
                 _dbContext.Products.Remove(product);
             }

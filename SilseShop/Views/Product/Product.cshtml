@@ -1,0 +1,22 @@
+﻿@model ProductViewModel
+@{
+   ViewData["Title"] = "Product";
+}
+<div class="container border product">
+   <div class="container row product-child">
+      <div class="col text-center ">
+         <img src="@Url.Content(Model.ImgUrl)" class="product-img" alt="@Url.Content(@Model.Name + "_image")" />
+      </div>
+      <div class="product-title text-center">
+         <span class="card-title "> @Model.TypeName @Model.Name</span>
+         <br />
+         <span class="font-weight-bold">@Model.Price Руб.</span>
+      </div>
+      <div class="add-to-cart">
+         <form method="post" asp-controller="Product" asp-action="AddToCart">
+            @Html.HiddenFor(m => m.Id)
+            <input class="btn btn-dark btn-sm" type="submit" value="Купить" />
+         </form>
+      </div>
+   </div>
+</div>

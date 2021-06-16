@@ -1,0 +1,33 @@
+﻿@{
+   ViewData["Title"] = "Nav Page";
+}
+@model List<ProductViewModel>
+<div class="bg-white col row d-flex flex-wrap">
+   <div class="container border categorys col ">
+      <div class="text-center category-title ">
+         <span class="navbar-brand ">Категории</span>
+      </div>
+      <div class="category">
+         <span><img src="~/images/cpu_icon.jpg" alt="" /></span>
+         <a asp-controller="Nav" asp-action="Processors">Процессоры</a>
+      </div>
+      <div class="category">
+         <span><img src="~/images/videocard_icon.jpg" alt="" /></span>
+         <a asp-controller="Nav" asp-action="Videocards">Видеокарты</a>
+      </div>
+      <div class="category">
+         <span><img src="~/images/motherboard_icon.jpg" alt="" /></span>
+         <a asp-controller="Nav" asp-action="Motherboards">Материнские платы</a>
+      </div>
+      <div class="category">
+         <span><img src="~/images/RAM_icon.jpg" alt="" /></span>
+         <a asp-controller="Nav" asp-action="RAM">Оперативная память</a>
+      </div>
+   </div>
+   <div class="container col d-flex flex-wrap justify-content-center">
+   @foreach (ProductViewModel product in Model)
+   {
+      @await Html.PartialAsync("~/Views/Product/Product.cshtml", product);
+   }
+   </div>
+</div>

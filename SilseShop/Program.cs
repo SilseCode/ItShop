@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using SilseShop.Database;
 
 namespace SilseShop
 {
@@ -13,7 +8,16 @@ namespace SilseShop
     {
         public static void Main(string[] args)
         {
+            try
+            {
+
             CreateHostBuilder(args).Build().Run();
+            }
+            catch (System.Exception ex)
+            {
+
+                System.Console.WriteLine(ex.Message);
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
